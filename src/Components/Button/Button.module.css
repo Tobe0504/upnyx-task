@@ -1,0 +1,42 @@
+.button {
+  border-radius: 5px;
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease-in-out;
+  border-radius: 4px;
+}
+
+.primary {
+  border: none;
+  color: var(--white);
+  background: var(--buttonBackground);
+}
+
+.primary:disabled,
+.tertiary:disabled {
+  opacity: 0.4;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .button {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    font-size: 14px;
+    line-height: 23px;
+  }
+}

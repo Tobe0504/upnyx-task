@@ -1,0 +1,43 @@
+.container {
+  height: 100vh;
+  position: relative;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  height: 82px;
+}
+
+.body {
+  height: calc(100vh - 82px);
+  overflow: auto;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    height: 100vh;
+  }
+
+  .header {
+    height: 62px;
+  }
+
+  .body {
+    height: calc(100vh - 62px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    height: 100vh;
+  }
+
+  .header {
+    height: 62px;
+  }
+
+  .body {
+    height: calc(100vh - 62px);
+  }
+}

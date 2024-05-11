@@ -1,13 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Inter, Epilogue, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  transition: all 0.3s ease-in-out;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: Inter, Epilogue, source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: none;
+}
+
+#dark {
+  background: var(--darkBackground);
+  transition: all 0.3s ease-in-out;
+}
+
+#dark {
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
+}
+
+#light {
+  color: var(--darkFont);
+}
+
+:root {
+  --darkBackground: #323842ff;
+  --white: #ffffffff;
+  --formBackground: #171a1fff;
+  --inputSvg: #9095a0ff;
+  --red: red;
+  --buttonBackground: #4069e5ff;
+  --darkFont: #171a1fff;
 }
