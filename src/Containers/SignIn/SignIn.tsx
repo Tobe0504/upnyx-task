@@ -9,6 +9,7 @@ import { inputChangeHandler } from "../../HelperFunctions/inputChangeHandler";
 import { useContext } from "react";
 import { AuthUserContext } from "../../Context/AuthUserContext";
 import { ThemeContext } from "../../Context/ThemeContext";
+import Error from "../../Components/Error/Error";
 
 const SignIn = () => {
   // Context
@@ -27,6 +28,10 @@ const SignIn = () => {
         >
           <h4>Welcome Back</h4>
           <p>Sign in to continue to Aiworksquad.</p>
+
+          {signInRequestObject?.error && (
+            <Error type="error">{signInRequestObject?.error}</Error>
+          )}
           <Input
             placeholder="Email"
             icon={<EmailOutlinedIcon />}

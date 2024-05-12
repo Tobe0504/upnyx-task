@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: none;
+  margin: 0px;
 }
 
 #dark {
@@ -41,6 +41,7 @@ h6 {
 
 #light {
   color: var(--darkFont);
+  transition: all 0.3s ease-in-out;
 }
 
 :root {
@@ -50,5 +51,13 @@ h6 {
   --inputSvg: #9095a0ff;
   --red: red;
   --buttonBackground: #4069e5ff;
-  --darkFont: #171a1fff;
+  --: #171a1fff;
+  --primaryButtonBorder: #8191c9ff;
+  --grey: #565e6cff;
+  --solidBorder: #1d2128ff;
+  --introBorderColor: #bcc1caff;
+  --introSecondary: #6e7787ff;
+  --green: #0095a9ff;
+  --chatSent: #12a9bcff;
+  --svgColors: #00454fff;
 }

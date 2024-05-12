@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+  padding: 23px 1rem 2rem 1rem;
+  gap: 2rem;
+}
+
+.historySection {
+  width: 218px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 1px #171a1f, 0px 0px 2px #171a1f; /* shadow-xs */
+}
+
+.chatSection {
+  flex: 1;
+}

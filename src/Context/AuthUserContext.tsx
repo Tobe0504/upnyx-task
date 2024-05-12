@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   AuthUserContextValues,
   AuthUserContextProviderProps,
@@ -26,21 +26,55 @@ const AuthUserContextProvider = ({
 
   //   Router
   const navigate = useNavigate();
+  const location = useLocation();
 
   //   Functions
   const signIn = () => {
-    setSignInRequestObject({ isLoading: true });
+    setSignInRequestObject({ isLoading: true, error: "" });
     setTimeout(() => {
-      setSignInRequestObject({ isLoading: false });
-      sessionStorage.setItem("upnyx-access", JSON.stringify(userLoginInfo));
-      setTheme("light");
-      navigate("/");
+      if (
+        userLoginInfo.email !== "user123" &&
+        userLoginInfo.password !== "pass123"
+      ) {
+        setSignInRequestObject({
+          isLoading: false,
+          error: "You have used invalid login credentials",
+        });
+      } else {
+        setSignInRequestObject({ isLoading: false });
+        sessionStorage.setItem("upnyx-access", JSON.stringify(userLoginInfo));
+        setTheme("light");
+        navigate("/");
+      }
     }, 3000);
   };
 
+  const logout = () => {
+    sessionStorage.removeItem("upnyx-access");
+    setUserLoginInfo({ email: "", password: "" });
+    navigate("/sign-in", { state: location.pathname });
+  };
+
+  // Session storage
+  const userInfo = sessionStorage.getItem("upnyx-access");
+
+  // Effects
+  useEffect(() => {
+    if (userInfo) {
+      setUserLoginInfo(JSON.parse(userInfo));
+    }
+  }, []);
+
   return (
     <AuthUserContext.Provider
-      value={{ userLoginInfo, setUserLoginInfo, signIn, signInRequestObject }}
+      value={{
+        userLoginInfo,
+        setUserLoginInfo,
+        signIn,
+        signInRequestObject,
+        logout,
+        userInfo,
+      }}
     >
       {children}
     </AuthUserContext.Provider>

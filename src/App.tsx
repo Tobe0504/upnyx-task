@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/" element={<Dashboard />} />
+        <Route path="/:chatId" element={<Dashboard />} />
       </Routes>
     </div>
   );

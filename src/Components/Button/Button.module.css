@@ -22,6 +22,12 @@
   background: var(--buttonBackground);
 }
 
+.secondary {
+  border: 1px solid var(--primaryButtonBorder);
+  color: var(--primaryButtonBorder);
+  background: transparent;
+}
+
 .primary:disabled,
 .tertiary:disabled {
   opacity: 0.4;

@@ -3,6 +3,13 @@ export interface LayoutProps {
   theme?: "dark" | "light";
 }
 
-export interface HeaderProps {
-  theme?: "dark" | "light";
+export interface InfoPopupProps {
+  children: React.ReactNode;
+  text?: string;
+}
+
+export interface ErrorProps {
+  children: React.ReactNode;
+  type: "success" | "error";
+  notShowIndicator?: boolean;
 }

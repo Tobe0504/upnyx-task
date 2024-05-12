@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import ThemeContextProvider from "./Context/ThemeContext";
 import AuthUserContextProvider from "./Context/AuthUserContext";
+import ChatsContextProvider from "./Context/ChatsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,7 +16,9 @@ root.render(
     <Router>
       <ThemeContextProvider>
         <AuthUserContextProvider>
-          <App />
+          <ChatsContextProvider>
+            <App />
+          </ChatsContextProvider>
         </AuthUserContextProvider>
       </ThemeContextProvider>
     </Router>
