@@ -33,7 +33,7 @@ const AuthUserContextProvider = ({
     setSignInRequestObject({ isLoading: true, error: "" });
     setTimeout(() => {
       if (
-        userLoginInfo.email !== "user123" &&
+        userLoginInfo.email !== "user123" ||
         userLoginInfo.password !== "pass123"
       ) {
         setSignInRequestObject({
