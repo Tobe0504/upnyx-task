@@ -1,6 +1,5 @@
 import classes from "./ChatInteraction.module.css";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import Input from "../../Components/Input/Input";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -13,11 +12,17 @@ import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { CircularProgress } from "@mui/material";
 import { ThemeContext } from "../../Context/ThemeContext";
+import Button from "../../Components/Button/Button";
 
 const ChatInteraction = () => {
   // Context
-  const { chatsState, addConversationToActiveChat, setChatTitle } =
-    useContext(ChatsContext);
+  const {
+    chatsState,
+    addConversationToActiveChat,
+    setChatTitle,
+    activeDepartment,
+    createNewChat,
+  } = useContext(ChatsContext);
   const { theme } = useContext(ThemeContext);
 
   //   State
@@ -62,30 +67,39 @@ const ChatInteraction = () => {
       </div>
 
       <div className={classes.chatSection}>
-        <div className={classes.chats}>
-          {activeChat?.conversation?.map((data, i) => {
-            return (
-              <div
-                key={i}
-                className={`${classes.chat} ${
-                  data.isResponse ? classes.isResponse : classes.notResponse
-                }`}
-              >
-                {data?.isResponse && <ForumOutlinedIcon />}
-                <p>{data.text}</p>
-                {!data?.isResponse && <HelpOutlineOutlinedIcon />}
-                {data?.isResponse && (
-                  <div className={classes.actions}>
-                    <ContentCopyOutlinedIcon />
-                    <OpenInNewOutlinedIcon />
-                    <FileDownloadOutlinedIcon />
-                    <EmailOutlinedIcon />
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
+        {chatId ? (
+          <div className={classes.chats}>
+            {activeChat?.conversation?.map((data, i) => {
+              return (
+                <div
+                  key={i}
+                  className={`${classes.chat} ${
+                    data.isResponse ? classes.isResponse : classes.notResponse
+                  }`}
+                >
+                  {data?.isResponse && <ForumOutlinedIcon />}
+                  <p>{data.text}</p>
+                  {!data?.isResponse && <HelpOutlineOutlinedIcon />}
+                  {data?.isResponse && (
+                    <div className={classes.actions}>
+                      <ContentCopyOutlinedIcon />
+                      <OpenInNewOutlinedIcon />
+                      <FileDownloadOutlinedIcon />
+                      <EmailOutlinedIcon />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={classes.create}>
+            <p>
+              Select a chat or Create a new chat to start a new conversation
+            </p>
+            <Button onClick={createNewChat}>New chat</Button>
+          </div>
+        )}
       </div>
 
       <form
@@ -98,7 +112,11 @@ const ChatInteraction = () => {
       >
         <div>
           <input
-            placeholder="Enter your marketing query here..."
+            placeholder={
+              activeDepartment === "Marketing"
+                ? "Enter your marketing query here..."
+                : "Enter your sales query here..."
+            }
             type="text"
             onChange={(e) => {
               setText(e.target.value);

@@ -62,7 +62,8 @@
   flex-grow: 0;
   flex-shrink: 0;
   padding: 1rem 0;
-  height: 100%;
+  min-height: calc(80% - 24px);
+  flex: 1;
 }
 
 .chats {
@@ -131,7 +132,8 @@
 .inputSection {
   flex-basis: 56px;
   position: sticky;
-  bottom: 0;
+  bottom: 0px;
+  width: 100%;
 }
 
 .inputSection > div {
@@ -156,6 +158,7 @@
   text-indent: 70px;
   outline: none;
   resize: none;
+  padding-right: 70px;
 }
 
 .inputSection > div > input::placeholder {
@@ -204,4 +207,140 @@
   font-weight: 400;
   margin-top: 2rem;
   margin-left: 5rem;
+}
+
+.create {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+  padding: 0 30%;
+}
+
+.create > p {
+  font-family: Epilogue;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    width: 100%;
+  }
+
+  .introSection {
+    padding: 1rem;
+    min-height: 68px;
+  }
+
+  .introSection > p > svg {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .isResponse,
+  .notResponse {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  .isResponse > svg,
+  .notResponse > svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .notResponse {
+    padding: 15px;
+  }
+
+  .actions > svg {
+    font-size: 16px;
+  }
+
+  .inputSection > div > span > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputSection > div > input {
+    font-size: 14px;
+    line-height: 140%;
+    padding: 0 60px;
+    text-indent: 0px;
+  }
+
+  .inputSection > p {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .create {
+    height: 50vh;
+    padding: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
+
+  .introSection {
+    padding: 1rem;
+    min-height: 68px;
+  }
+
+  .introSection > p > svg {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .isResponse,
+  .notResponse {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 140%;
+  }
+
+  .isResponse > svg,
+  .notResponse > svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .notResponse {
+    padding: 15px;
+  }
+
+  .actions > svg {
+    font-size: 16px;
+  }
+
+  .inputSection > div > span > svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .inputSection > div > input {
+    font-size: 14px;
+    line-height: 140%;
+    padding: 0 60px;
+    text-indent: 0px;
+  }
+
+  .inputSection > p {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .create {
+    height: 50vh;
+    padding: 0 1rem;
+  }
 }

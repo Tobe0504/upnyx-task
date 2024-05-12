@@ -38,6 +38,8 @@ export interface ChatsContextValues {
   ) => void;
   createNewChat: () => void;
   setChatTitle: (id: string, text: string) => void;
+  activeDepartment: string;
+  setActiveDepartment: Dispatch<SetStateAction<string>>;
 }
 
 export interface ChatsContextProviderProps {

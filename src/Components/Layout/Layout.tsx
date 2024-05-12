@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import Header from "../../Containers/Header/Header";
 import { LayoutProps } from "../../Utilities/Types/componentPropTypes";
 import classes from "./Layout.module.css";

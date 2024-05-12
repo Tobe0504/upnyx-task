@@ -8,7 +8,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import InfoPopup from "../../Components/InfoPopup/InfoPopup";
 import React, { useContext, useState } from "react";
 import { ChatsContext } from "../../Context/ChatsContext";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LaunchIcon from "@mui/icons-material/Launch";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
@@ -29,7 +29,6 @@ const HistorySectionAndCtas = () => {
 
   // Router '
   const navigate = useNavigate();
-  const { chatId } = useParams();
 
   return (
     <div className={classes.container}>
@@ -48,51 +47,56 @@ const HistorySectionAndCtas = () => {
           {chatsState.map((data, i) => {
             return (
               <React.Fragment key={i}>
-                <InfoPopup text={data?.title}>
-                  <div
-                    className={classes.chat}
+                <div className={classes.chat}>
+                  <span
                     onClick={() => {
                       navigate(`/${data?.id}`);
                     }}
                   >
-                    <span>
-                      <ChatBubbleOutlineIcon />
-                    </span>
-                    {titleIsEditable && data.id === selectedId ? (
-                      <input
-                        value={data?.title}
-                        onChange={(e) => {
-                          setChatTitle(data.id, e.target.value);
-                        }}
-                        onKeyUp={(e) => {
-                          if (e.key === "Enter") {
-                            setTitleIsEditable(false);
-                          }
-                        }}
-                        onBlur={() => {
+                    <ChatBubbleOutlineIcon />
+                  </span>
+                  {titleIsEditable && data.id === selectedId ? (
+                    <input
+                      value={data?.title}
+                      onChange={(e) => {
+                        setChatTitle(data.id, e.target.value);
+                      }}
+                      onKeyUp={(e) => {
+                        if (e.key === "Enter") {
                           setTitleIsEditable(false);
+                        }
+                      }}
+                      onBlur={() => {
+                        setTitleIsEditable(false);
+                      }}
+                    />
+                  ) : (
+                    <InfoPopup text={data?.title}>
+                      <p
+                        onClick={() => {
+                          navigate(`/${data?.id}`);
                         }}
-                      />
-                    ) : (
-                      <p>{data?.title}</p>
-                    )}
-                    <span
-                      onClick={() => {
-                        setSelectedId(data.id);
-                        setTitleIsEditable(true);
-                      }}
-                    >
-                      <BorderColorIcon />
-                    </span>
-                    <span
-                      onClick={() => {
-                        deleteChat(data?.id);
-                      }}
-                    >
-                      <DeleteOutlineIcon />
-                    </span>
-                  </div>
-                </InfoPopup>
+                      >
+                        {data?.title}
+                      </p>
+                    </InfoPopup>
+                  )}
+                  <span
+                    onClick={() => {
+                      setSelectedId(data.id);
+                      setTitleIsEditable(true);
+                    }}
+                  >
+                    <BorderColorIcon />
+                  </span>
+                  <span
+                    onClick={() => {
+                      deleteChat(data?.id);
+                    }}
+                  >
+                    <DeleteOutlineIcon />
+                  </span>
+                </div>
               </React.Fragment>
             );
           })}

@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 
-.chat > p {
+.chat p {
   font-family: Inter;
   font-size: 12px;
   line-height: 20px;

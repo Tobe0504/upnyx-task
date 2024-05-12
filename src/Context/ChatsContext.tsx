@@ -1,14 +1,10 @@
-import { createContext, useEffect, useId, useState } from "react";
+import { createContext, useState } from "react";
 import { chats } from "../Utilities/chats";
 import {
   ChatsContextValues,
   ChatsContextProviderProps,
 } from "../Utilities/Types/ContextTypes";
-import {
-  chatsStateType,
-  chatsType,
-  conversationType,
-} from "../Utilities/Types/dataTypes";
+import { chatsStateType, conversationType } from "../Utilities/Types/dataTypes";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +18,9 @@ const ChatsContextProvider = ({ children }: ChatsContextProviderProps) => {
     })
   );
 
-  //   Context
+  const [activeDepartment, setActiveDepartment] = useState("Marketing");
+
+  //   Roiter
   const navigate = useNavigate();
 
   //   Utils
@@ -32,6 +30,8 @@ const ChatsContextProvider = ({ children }: ChatsContextProviderProps) => {
     });
 
     setChatsState(chatsStateCopy);
+
+    navigate(`/`);
   };
 
   const addConversationToActiveChat = (
@@ -70,6 +70,8 @@ const ChatsContextProvider = ({ children }: ChatsContextProviderProps) => {
         addConversationToActiveChat,
         createNewChat,
         setChatTitle,
+        activeDepartment,
+        setActiveDepartment,
       }}
     >
       {children}

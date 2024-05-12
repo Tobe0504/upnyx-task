@@ -63,6 +63,8 @@ const AuthUserContextProvider = ({
     if (userInfo) {
       setUserLoginInfo(JSON.parse(userInfo));
     }
+
+    // eslint-disable-next-line
   }, []);
 
   return (
